@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Home from "./components/home/Home";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
+import Trailer from "./components/trailer/Trailer";
 
 function App() {
 
@@ -13,9 +14,6 @@ function App() {
   const getMovies = async () => {
     try {
       const response = await api.get("/api/v1/movies");
-
-      console.log(response.data);
-
       setMovies(response.data);
     } catch (error) {
       console.log(error);
@@ -32,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="/" element={<Home movies={movies}/>}/>
+          <Route path="/Trailer/:ytTrailerId" element={<Trailer/>}></Route>
         </Route>
       </Routes>
 

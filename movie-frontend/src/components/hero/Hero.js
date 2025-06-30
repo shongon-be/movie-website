@@ -1,18 +1,15 @@
 import './Hero.css';
 import Carousel from "react-material-ui-carousel";
 import { Paper } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 const Hero = ({movies}) => {
-    if (!movies || !Array.isArray(movies)) {
-        return <div>Đang tải phim...</div>; // Hoặc có thể return null
+    if (!movies || !Array.isArray(movies) || movies.length === 0) {
+        return <div>Loading...</div>; 
     }
-
-    // Nếu movies là array rỗng, hiển thị thông báo
-    if (movies.length === 0) {
-        return <div>Không có phim nào để hiển thị</div>;
-    }
-
 
     return (
         <div>
@@ -29,6 +26,15 @@ const Hero = ({movies}) => {
                                             </div>
                                             <div className="movie-title">
                                                 <h4>{movie.title}</h4>
+                                            </div>
+                                            <div className="movie-buttons-container">
+                                                <Link to={`/Trailer/${movie.trailerLink.substring(movie.trailerLink.length - 11)}`}>
+                                                    <div className="play-button-icon-container">
+                                                    <FontAwesomeIcon className='play-button-icon'
+                                                        icon={ faCirclePlay }
+                                                    />
+                                                    </div>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
