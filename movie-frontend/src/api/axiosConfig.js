@@ -4,6 +4,6 @@ import axios from "axios";
 // * Because of the web's api was running on the different domain or origin 
     // * That cause may block our access to the endpoints.
 export default axios.create({
-    baseURL: "https://b0a5-2405-4800-5714-6930-c039-cc3a-dfa5-cf9b.ngrok-free.app",
+    baseURL: process.env.REACT_APP_BASE_URL,
     headers: {"ngrok-skip-browser-warning": "true"}
 });
